@@ -1,4 +1,9 @@
 {
+  "author": {
+    "email": "hello@ecrin.digital",
+    "name": "Ecrin Digital",
+    "url": "https://ecrin.digital"
+  },
   "name": "expo-starter-auth-nativewind",
   "main": "expo-router/entry",
   "version": "1.0.0",
@@ -12,6 +17,8 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
+    "@expo/vector-icons": "^14.0.4",
+    "@react-native-async-storage/async-storage": "1.23.1",
     "@types/jest": "^29.5.14",
     "@types/mocha": "^10.0.10",
     "expo": "^52.0.16",
