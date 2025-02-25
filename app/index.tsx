@@ -1,6 +1,6 @@
-import { Alert, Text, View } from 'react-native';
+import { Alert, Text, View } from "react-native";
 
-import Button from '@/components/Button';
+import Button from "@/components/Button";
 
 export default function Index() {
   return (
@@ -13,7 +13,7 @@ export default function Index() {
       <Button
         label="Sounds good!"
         onPress={() => {
-          Alert.alert('NativeWind', "You're all set up!");
+          Alert.alert("NativeWind", "You're all set up!");
         }}
       />
     </View>

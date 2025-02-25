@@ -1,18 +1,18 @@
-import React from 'react';
-import { View, Text, Image, ScrollView } from 'react-native';
+import React from "react";
+import { View, Text, Image, ScrollView } from "react-native";
 
-import Button from '../../components/Button';
-import { useAuth } from '../../context/AuthContext';
+import Button from "../../components/Button";
+import { useAuth } from "../../context/AuthContext";
 
 export default function ProfileScreen() {
   const { user } = useAuth();
 
-  const name = user?.name ?? 'Anonymous';
-  const email = user?.email ?? 'No email provided';
+  const name = user?.name ?? "Anonymous";
+  const email = user?.email ?? "No email provided";
   const avatar = user?.avatar ?? null;
-  const bio = user?.bio ?? 'No bio provided';
-  const location = user?.location ?? 'Not specified';
-  const phone = user?.phone ?? 'Not provided';
+  const bio = user?.bio ?? "No bio provided";
+  const location = user?.location ?? "Not specified";
+  const phone = user?.phone ?? "Not provided";
 
   return (
     <ScrollView className="flex-1 bg-white">
@@ -23,7 +23,7 @@ export default function ProfileScreen() {
           ) : (
             <View className="w-28 h-28 rounded-full bg-indigo-100 items-center justify-center">
               <Text className="text-3xl font-semibold text-indigo-700">
-                {name?.charAt(0) || 'U'}
+                {name?.charAt(0) || "U"}
               </Text>
             </View>
           )}
@@ -45,7 +45,7 @@ export default function ProfileScreen() {
               </View>
               <View>
                 <Text className="text-gray-500 text-sm">User ID</Text>
-                <Text className="font-medium">{user?.id ?? 'Not available'}</Text>
+                <Text className="font-medium">{user?.id ?? "Not available"}</Text>
               </View>
               <View>
                 <Text className="text-gray-500 text-sm">Bio</Text>
@@ -65,7 +65,7 @@ export default function ProfileScreen() {
 
         <Button
           label="Edit Profile"
-          onPress={() => alert('Edit profile functionality would go here')}
+          onPress={() => alert("Edit profile functionality would go here")}
           variant="primary"
           fullWidth={false}
         />

@@ -1,10 +1,10 @@
-import { router } from 'expo-router';
-import React, { useState } from 'react';
-import { View, Text, Alert, ScrollView, TouchableOpacity } from 'react-native';
+import { router } from "expo-router";
+import React, { useState } from "react";
+import { View, Text, Alert, ScrollView, TouchableOpacity } from "react-native";
 
-import RegisterForm from '../../components/RegisterForm';
-import { useAuth } from '../../context/AuthContext';
-import { RegisterCredentials } from '../../types/user';
+import RegisterForm from "../../components/RegisterForm";
+import { useAuth } from "../../context/AuthContext";
+import { RegisterCredentials } from "../../types/user";
 
 export default function RegisterScreen() {
   const [error, setError] = useState<string | null>(null);
@@ -15,10 +15,10 @@ export default function RegisterScreen() {
       setError(null);
       await register(credentials);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to register');
+      setError(err instanceof Error ? err.message : "Failed to register");
       Alert.alert(
-        'Registration Failed',
-        err instanceof Error ? err.message : 'Something went wrong'
+        "Registration Failed",
+        err instanceof Error ? err.message : "Something went wrong",
       );
     }
   };
@@ -42,7 +42,7 @@ export default function RegisterScreen() {
 
           <View className="mt-6 flex-row justify-center">
             <Text className="text-gray-600">Already have an account? </Text>
-            <TouchableOpacity onPress={() => router.push('/auth/login')}>
+            <TouchableOpacity onPress={() => router.push("/auth/login")}>
               <Text className="text-indigo-700 font-bold">Sign In</Text>
             </TouchableOpacity>
           </View>

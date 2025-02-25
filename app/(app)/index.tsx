@@ -1,14 +1,14 @@
-import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import React from "react";
+import { View, Text, ScrollView } from "react-native";
 
-import Button from '../../components/Button';
-import { useAuth } from '../../context/AuthContext';
+import Button from "../../components/Button";
+import { useAuth } from "../../context/AuthContext";
 
 export default function HomeScreen() {
   const { user, logout } = useAuth();
 
-  const name = user?.name ?? 'User';
-  const email = user?.email ?? 'No email';
+  const name = user?.name ?? "User";
+  const email = user?.email ?? "No email";
 
   return (
     <ScrollView className="flex-1 bg-white">
@@ -20,7 +20,7 @@ export default function HomeScreen() {
             <Text className="text-gray-500 mb-1">Your email:</Text>
             <Text className="font-semibold mb-2">{email}</Text>
             <Text className="text-gray-500 mb-1">User ID:</Text>
-            <Text className="font-semibold">{user?.id ?? 'Not available'}</Text>
+            <Text className="font-semibold">{user?.id ?? "Not available"}</Text>
           </View>
         </View>
 
