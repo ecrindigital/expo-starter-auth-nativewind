@@ -1,11 +1,11 @@
-import { Stack, Redirect, useSegments, useRouter } from "expo-router";
-import { StatusBar } from "expo-status-bar";
-import { useEffect, useCallback } from "react";
-import { Text, View, ActivityIndicator } from "react-native";
+import { Stack, useSegments, useRouter } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
+import { useEffect, useCallback } from 'react';
+import { Text, View, ActivityIndicator } from 'react-native';
 
-import { AuthProvider, useAuth } from "../context/AuthContext";
+import { AuthProvider, useAuth } from '../context/AuthContext';
 
-import "../global.css";
+import '../global.css';
 
 function AuthRoot() {
   const { isAuthenticated, isLoading } = useAuth();
@@ -13,16 +13,16 @@ function AuthRoot() {
   const router = useRouter();
 
   const handleNavigation = useCallback(() => {
-    const inAuthGroup = segments[0] === "auth";
+    const inAuthGroup = segments[0] === 'auth';
 
     if (isLoading) {
       return;
     }
 
     if (!isAuthenticated && !inAuthGroup) {
-      router.replace("/auth/login");
+      router.replace('/auth/login');
     } else if (isAuthenticated && inAuthGroup) {
-      router.replace("/");
+      router.replace('/');
     }
   }, [isAuthenticated, segments, isLoading]);
 
@@ -45,11 +45,11 @@ function AuthRoot() {
       <Stack
         screenOptions={{
           headerStyle: {
-            backgroundColor: "#4338ca",
+            backgroundColor: '#4338ca',
           },
-          headerTintColor: "#fff",
+          headerTintColor: '#fff',
           headerTitleStyle: {
-            fontWeight: "bold",
+            fontWeight: 'bold',
           },
         }}
       >
@@ -63,14 +63,14 @@ function AuthRoot() {
         <Stack.Screen
           name="auth/login"
           options={{
-            title: "Login",
+            title: 'Login',
             headerShown: false,
           }}
         />
         <Stack.Screen
           name="auth/register"
           options={{
-            title: "Create Account",
+            title: 'Create Account',
             headerShown: false,
           }}
         />

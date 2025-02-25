@@ -10,11 +10,11 @@ export const getErrorMessage = (error: unknown): string => {
     return error.message;
   }
 
-  if (typeof error === "string") {
+  if (typeof error === 'string') {
     return error;
   }
 
-  return "An unknown error occurred";
+  return 'An unknown error occurred';
 };
 
 /**
@@ -22,7 +22,7 @@ export const getErrorMessage = (error: unknown): string => {
  */
 export const logError = (error: unknown, context?: string): void => {
   if (__DEV__) {
-    console.error(`Error${context ? ` in ${context}` : ""}:`, error);
+    console.error(`Error${context ? ` in ${context}` : ''}:`, error);
   }
 };
 
@@ -30,11 +30,11 @@ export const logError = (error: unknown, context?: string): void => {
  * Categorize errors for better error handling
  */
 export enum ErrorCategory {
-  NETWORK = "network",
-  AUTHENTICATION = "authentication",
-  VALIDATION = "validation",
-  SERVER = "server",
-  UNKNOWN = "unknown",
+  NETWORK = 'network',
+  AUTHENTICATION = 'authentication',
+  VALIDATION = 'validation',
+  SERVER = 'server',
+  UNKNOWN = 'unknown',
 }
 
 /**
@@ -44,38 +44,38 @@ export const categorizeError = (error: unknown): ErrorCategory => {
   const message = getErrorMessage(error).toLowerCase();
 
   if (
-    message.includes("network") ||
-    message.includes("connection") ||
-    message.includes("timeout")
+    message.includes('network') ||
+    message.includes('connection') ||
+    message.includes('timeout')
   ) {
     return ErrorCategory.NETWORK;
   }
 
   if (
-    message.includes("authentication") ||
-    message.includes("unauthorized") ||
-    message.includes("forbidden") ||
-    message.includes("token") ||
-    message.includes("login") ||
-    message.includes("password")
+    message.includes('authentication') ||
+    message.includes('unauthorized') ||
+    message.includes('forbidden') ||
+    message.includes('token') ||
+    message.includes('login') ||
+    message.includes('password')
   ) {
     return ErrorCategory.AUTHENTICATION;
   }
 
   if (
-    message.includes("validation") ||
-    message.includes("required") ||
-    message.includes("invalid") ||
-    message.includes("format")
+    message.includes('validation') ||
+    message.includes('required') ||
+    message.includes('invalid') ||
+    message.includes('format')
   ) {
     return ErrorCategory.VALIDATION;
   }
 
   if (
-    message.includes("server") ||
-    message.includes("500") ||
-    message.includes("503") ||
-    message.includes("504")
+    message.includes('server') ||
+    message.includes('500') ||
+    message.includes('503') ||
+    message.includes('504')
   ) {
     return ErrorCategory.SERVER;
   }

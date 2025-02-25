@@ -1,14 +1,14 @@
-import "@testing-library/jest-native/extend-expect";
+import '@testing-library/jest-native/extend-expect';
 
 global.jest = jest;
 
-jest.mock("nativewind", () => ({
-  withExpoSnack: () => (component) => component,
-  styled: (component) => component,
+jest.mock('nativewind', () => ({
+  withExpoSnack: () => component => component,
+  styled: component => component,
 }));
 
-jest.mock("react-native", () => {
-  const RN = jest.requireActual("react-native");
+jest.mock('react-native', () => {
+  const RN = jest.requireActual('react-native');
   return {
     ...RN,
     Alert: { alert: jest.fn() },
@@ -25,23 +25,23 @@ jest.mock("react-native", () => {
   };
 });
 
-jest.mock("expo-router", () => ({
+jest.mock('expo-router', () => ({
   useRouter: () => ({
     push: jest.fn(),
     replace: jest.fn(),
     back: jest.fn(),
   }),
   useLocalSearchParams: () => ({}),
-  Link: "Link",
+  Link: 'Link',
   Stack: jest.fn().mockImplementation(({ children }) => children),
 }));
 
-jest.mock("expo-constants", () => ({
+jest.mock('expo-constants', () => ({
   expoConfig: {
     extra: {
-      apiUrl: "http://localhost:3000",
+      apiUrl: 'http://localhost:3000',
     },
   },
 }));
 
-jest.mock("../global.css", () => ({}), { virtual: true });
+jest.mock('../global.css', () => ({}), { virtual: true });
