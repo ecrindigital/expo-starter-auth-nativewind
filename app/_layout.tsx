@@ -1,7 +1,8 @@
 import { Stack, Redirect, useSegments, useRouter } from "expo-router";
-import { useEffect, useCallback } from "react";
 import { StatusBar } from "expo-status-bar";
+import { useEffect, useCallback } from "react";
 import { Text, View, ActivityIndicator } from "react-native";
+
 import { AuthProvider, useAuth } from "../context/AuthContext";
 
 import "../global.css";
@@ -10,25 +11,25 @@ function AuthRoot() {
   const { isAuthenticated, isLoading } = useAuth();
   const segments = useSegments();
   const router = useRouter();
-  
+
   const handleNavigation = useCallback(() => {
     const inAuthGroup = segments[0] === "auth";
-    
+
     if (isLoading) {
       return;
     }
-    
+
     if (!isAuthenticated && !inAuthGroup) {
       router.replace("/auth/login");
     } else if (isAuthenticated && inAuthGroup) {
       router.replace("/");
     }
   }, [isAuthenticated, segments, isLoading]);
-  
+
   useEffect(() => {
     handleNavigation();
   }, [handleNavigation]);
-  
+
   if (isLoading) {
     return (
       <View className="flex-1 items-center justify-center bg-white">
@@ -37,7 +38,7 @@ function AuthRoot() {
       </View>
     );
   }
-  
+
   return (
     <>
       <StatusBar style="auto" />
@@ -58,7 +59,7 @@ function AuthRoot() {
             headerShown: false,
           }}
         />
-        
+
         <Stack.Screen
           name="auth/login"
           options={{

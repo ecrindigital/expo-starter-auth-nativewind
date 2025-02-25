@@ -1,7 +1,19 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { Alert } from 'react-native';
-import { User, AuthState, LoginCredentials, RegisterCredentials } from '../types/user';
-import AuthService from '../services/authService';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
+import { Alert } from "react-native";
+
+import AuthService from "../services/authService";
+import {
+  User,
+  AuthState,
+  LoginCredentials,
+  RegisterCredentials,
+} from "../types/user";
 
 interface AuthContextType extends AuthState {
   login: (credentials: LoginCredentials) => Promise<void>;
@@ -37,7 +49,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const checkAuthStatus = async () => {
       try {
         const isAuthenticated = await AuthService.isAuthenticated();
-        
+
         if (isAuthenticated) {
           const user = await AuthService.getCurrentUser();
           setState({
@@ -59,7 +71,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           user: null,
           isAuthenticated: false,
           isLoading: false,
-          error: 'Failed to restore authentication state',
+          error: "Failed to restore authentication state",
         });
       }
     };
@@ -70,9 +82,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const login = async (credentials: LoginCredentials) => {
     try {
       setState({ ...state, isLoading: true, error: null });
-      
+
       const user = await AuthService.login(credentials);
-      
+
       setState({
         user,
         isAuthenticated: true,
@@ -83,7 +95,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       setState({
         ...state,
         isLoading: false,
-        error: error instanceof Error ? error.message : 'Login failed',
+        error: error instanceof Error ? error.message : "Login failed",
       });
       throw error;
     }
@@ -92,9 +104,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const register = async (credentials: RegisterCredentials) => {
     try {
       setState({ ...state, isLoading: true, error: null });
-      
+
       const user = await AuthService.register(credentials);
-      
+
       setState({
         user,
         isAuthenticated: true,
@@ -105,7 +117,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       setState({
         ...state,
         isLoading: false,
-        error: error instanceof Error ? error.message : 'Registration failed',
+        error: error instanceof Error ? error.message : "Registration failed",
       });
       throw error;
     }
@@ -114,9 +126,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const logout = async () => {
     try {
       setState({ ...state, isLoading: true, error: null });
-      
+
       await AuthService.logout();
-      
+
       setState({
         user: null,
         isAuthenticated: false,
@@ -127,9 +139,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       setState({
         ...state,
         isLoading: false,
-        error: error instanceof Error ? error.message : 'Logout failed',
+        error: error instanceof Error ? error.message : "Logout failed",
       });
-      Alert.alert('Logout Error', 'Failed to log out. Please try again.');
+      Alert.alert("Logout Error", "Failed to log out. Please try again.");
     }
   };
 
@@ -146,19 +158,17 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={contextValue}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
   );
 };
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
-  
+
   if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error("useAuth must be used within an AuthProvider");
   }
-  
+
   return context;
 };
 

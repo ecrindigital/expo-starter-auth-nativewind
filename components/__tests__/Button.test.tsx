@@ -1,5 +1,6 @@
-import React from "react";
 import { render, fireEvent } from "@testing-library/react-native";
+import React from "react";
+
 import Button from "../Button";
 
 jest.mock("react-native", () => {
@@ -18,7 +19,7 @@ describe("Button Component", () => {
   test("calls onPress when pressed", () => {
     const onPressMock = jest.fn();
     const { getByText } = render(
-      <Button label="Press Me" onPress={onPressMock} />
+      <Button label="Press Me" onPress={onPressMock} />,
     );
 
     fireEvent.press(getByText("Press Me"));

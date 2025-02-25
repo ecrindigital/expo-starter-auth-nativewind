@@ -1,5 +1,6 @@
-import Button from "@/components/Button";
 import { Alert, Text, View } from "react-native";
+
+import Button from "@/components/Button";
 
 export default function Index() {
   return (

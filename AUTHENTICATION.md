@@ -63,11 +63,11 @@ Located in `app/_layout.tsx`, the application implements a protected route syste
 To access the authentication state in any component:
 
 ```tsx
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from "../context/AuthContext";
 
 function MyComponent() {
   const { user, isAuthenticated, isLoading, error } = useAuth();
-  
+
   // Use auth state in your component
 }
 ```
@@ -77,21 +77,21 @@ function MyComponent() {
 To perform authentication operations:
 
 ```tsx
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from "../context/AuthContext";
 
 function MyComponent() {
   const { login, register, logout } = useAuth();
-  
+
   // Login example
   const handleLogin = async () => {
     try {
-      await login({ email: 'user@example.com', password: 'password' });
+      await login({ email: "user@example.com", password: "password" });
       // Success - the router will automatically redirect
     } catch (error) {
       // Handle errors
     }
   };
-  
+
   // Logout example
   const handleLogout = async () => {
     await logout();

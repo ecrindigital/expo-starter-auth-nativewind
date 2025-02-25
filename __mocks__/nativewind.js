@@ -1,4 +1,4 @@
-const styled = component => component;
+const styled = (component) => component;
 
 module.exports = {
   styled,

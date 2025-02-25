@@ -1,19 +1,19 @@
 const ReactNative = {
   Alert: {
-    alert: jest.fn()
+    alert: jest.fn(),
   },
-  View: 'View',
-  Text: 'Text',
-  Pressable: 'Pressable',
+  View: "View",
+  Text: "Text",
+  Pressable: "Pressable",
   StyleSheet: {
     create: (styles) => styles,
   },
   Platform: {
-    OS: 'web',
+    OS: "web",
     select: jest.fn((config) => config.web),
   },
   Animated: {
-    View: 'Animated.View',
+    View: "Animated.View",
     createAnimatedComponent: jest.fn((component) => component),
     timing: jest.fn(),
     spring: jest.fn(),

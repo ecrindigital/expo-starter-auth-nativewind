@@ -1,4 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import { User, LoginCredentials } from "../types/user";
 
 const AUTH_TOKEN_KEY = "auth_token";
@@ -45,7 +46,7 @@ export default class AuthService {
    * Register a new user
    */
   static async register(
-    userData: LoginCredentials & { name: string }
+    userData: LoginCredentials & { name: string },
   ): Promise<User> {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
